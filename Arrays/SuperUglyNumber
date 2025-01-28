@@ -1,0 +1,39 @@
+package com.arrays.examples;
+
+import java.util.Scanner;
+
+public class SuperUglyNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the number: ");
+        int num = sc.nextInt();
+
+        System.out.print("Enter the number of primes: ");
+        int primeCount = sc.nextInt();
+
+        int[] primes = new int[primeCount];
+        System.out.println("Enter the primes: ");
+        for (int i = 0; i < primeCount; i++) {
+            primes[i] = sc.nextInt();
+        }
+
+        if (num <= 0) {
+            System.out.println("It is not a super ugly number");
+        } else {
+            // Divide the number by all primes in the list as long as possible
+            for (int prime : primes) {
+                while (num % prime == 0) {
+                    num /= prime;
+                }
+            }
+        }
+
+        // If the resulting number is 1, it is a superUgly number
+        if (num == 1) {
+            System.out.println("It is a super ugly number");
+        } else {
+            System.out.println("It is not a super ugly number");
+        }
+    }
+}
